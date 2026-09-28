@@ -1,0 +1,8 @@
+{
+  "name": "STUDYLAH",
+  "description": "An AI-powered study companion for Malaysian secondary school students (Form 1-6), featuring mindmaps, quizzes, flashcards, and past year paper analysis with a premium black and gold interface.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

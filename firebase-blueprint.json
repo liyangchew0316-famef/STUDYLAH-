@@ -1,0 +1,72 @@
+{
+  "entities": {
+    "MindMap": {
+      "collection": "mindmaps",
+      "fields": {
+        "id": { "type": "string" },
+        "topic": { "type": "string" },
+        "level": { "type": "string" },
+        "subject": { "type": "string" },
+        "unit": { "type": "string" },
+        "language": { "type": "string" },
+        "data": { "type": "map" },
+        "createdAt": { "type": "string" },
+        "userId": { "type": "string" }
+      }
+    },
+    "Quiz": {
+      "collection": "quizzes",
+      "fields": {
+        "id": { "type": "string" },
+        "topic": { "type": "string" },
+        "level": { "type": "string" },
+        "subject": { "type": "string" },
+        "unit": { "type": "string" },
+        "language": { "type": "string" },
+        "questions": { "type": "array" },
+        "createdAt": { "type": "string" },
+        "userId": { "type": "string" }
+      }
+    },
+    "FlashcardDeck": {
+      "collection": "flashcards",
+      "fields": {
+        "id": { "type": "string" },
+        "topic": { "type": "string" },
+        "level": { "type": "string" },
+        "subject": { "type": "string" },
+        "unit": { "type": "string" },
+        "language": { "type": "string" },
+        "cards": { "type": "array" },
+        "createdAt": { "type": "string" },
+        "userId": { "type": "string" }
+      }
+    },
+    "Textbook": {
+      "collection": "textbooks",
+      "fields": {
+        "id": { "type": "string" },
+        "unit": { "type": "string" },
+        "level": { "type": "string" },
+        "subject": { "type": "string" },
+        "language": { "type": "string" },
+        "content": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "userId": { "type": "string" }
+      }
+    },
+    "UnitList": {
+      "collection": "units",
+      "fields": {
+        "id": { "type": "string" },
+        "level": { "type": "string" },
+        "subject": { "type": "string" },
+        "language": { "type": "string" },
+        "units": { "type": "array" },
+        "isPreGenerated": { "type": "boolean" },
+        "createdAt": { "type": "string" },
+        "userId": { "type": "string" }
+      }
+    }
+  }
+}

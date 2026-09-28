@@ -1,0 +1,6 @@
+# STUDYLAH Robots.txt
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: /sitemap.xml

@@ -1,0 +1,46 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Units: Public read for KSSM syllabus units, write allowed with required schema fields
+    match /units/{unitId} {
+      allow read: if true;
+      allow create, update: if request.resource.data.keys().hasAll(['level', 'subject', 'units']);
+      allow delete: if false;
+    }
+
+    // Mindmaps: Public read for educational study, write with valid topic and data
+    match /mindmaps/{mapId} {
+      allow read: if true;
+      allow create, update: if request.resource.data.keys().hasAll(['topic', 'data', 'level', 'subject']);
+      allow delete: if isAuthenticated() && (resource.data.userId == request.auth.uid || request.auth.token.email == 'liyangchew0316@gmail.com');
+    }
+
+    // Quizzes: Public read for student practice, write with valid questions array
+    match /quizzes/{quizId} {
+      allow read: if true;
+      allow create, update: if request.resource.data.keys().hasAll(['topic', 'questions', 'level', 'subject']);
+      allow delete: if isAuthenticated() && (resource.data.userId == request.auth.uid || request.auth.token.email == 'liyangchew0316@gmail.com');
+    }
+
+    // Flashcards: Public read for memorization drills, write with valid cards array
+    match /flashcards/{deckId} {
+      allow read: if true;
+      allow create, update: if request.resource.data.keys().hasAll(['topic', 'cards', 'level', 'subject']);
+      allow delete: if isAuthenticated() && (resource.data.userId == request.auth.uid || request.auth.token.email == 'liyangchew0316@gmail.com');
+    }
+
+    // Textbooks: Public read for simplified textbooks, write with valid content string
+    match /textbooks/{textbookId} {
+      allow read: if true;
+      allow create, update: if request.resource.data.keys().hasAll(['unit', 'content', 'level', 'subject']);
+      allow delete: if isAuthenticated() && (resource.data.userId == request.auth.uid || request.auth.token.email == 'liyangchew0316@gmail.com');
+    }
+  }
+}
+

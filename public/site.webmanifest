@@ -1,0 +1,25 @@
+{
+  "name": "STUDYLAH - Malaysian Secondary School AI Study Companion",
+  "short_name": "STUDYLAH",
+  "description": "An AI-powered study companion for Malaysian secondary school students (Form 1-6), featuring mindmaps, quizzes, flashcards, and textbook summaries.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#D4AF37",
+  "orientation": "portrait-primary",
+  "categories": ["education", "productivity", "utilities"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
