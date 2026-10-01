@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, GraduationCap, ChevronLeft, Database } from 'lucide-react';
+import { BookOpen, GraduationCap, ChevronLeft, Database, Github } from 'lucide-react';
 import { motion } from 'motion/react';
 
 interface NavigationProps {
@@ -7,9 +7,16 @@ interface NavigationProps {
   onBack: () => void;
   title?: string;
   onOpenCloudLibrary?: () => void;
+  onOpenGitHubModal?: () => void;
 }
 
-export function Navigation({ currentLevel, onBack, title, onOpenCloudLibrary }: NavigationProps) {
+export function Navigation({
+  currentLevel,
+  onBack,
+  title,
+  onOpenCloudLibrary,
+  onOpenGitHubModal
+}: NavigationProps) {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#02000D]/85 backdrop-blur-xl border-b border-[#D9AA90]/20 px-6 h-16 flex items-center justify-between">
       <div className="flex items-center gap-4">
@@ -31,7 +38,20 @@ export function Navigation({ currentLevel, onBack, title, onOpenCloudLibrary }: 
         </div>
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-3">
+        {onOpenGitHubModal && (
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={onOpenGitHubModal}
+            className="flex items-center gap-1.5 bg-[#A65E46]/20 hover:bg-[#A65E46]/30 px-3 py-1.5 rounded-full border border-[#A65E46]/40 hover:border-[#D9AA90] text-xs text-[#EBDED4] hover:text-white transition-all shadow-sm"
+            title="GitHub 发布 & 下载打包源码"
+          >
+            <Github size={13} className="text-[#D9AA90]" />
+            <span className="font-medium">GitHub 打包</span>
+          </motion.button>
+        )}
+
         {onOpenCloudLibrary && (
           <motion.button
             whileHover={{ scale: 1.05 }}

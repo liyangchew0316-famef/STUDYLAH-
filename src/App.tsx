@@ -12,6 +12,7 @@ import { SubjectSelector } from './components/SubjectSelector';
 import { UnitSelector } from './components/UnitSelector';
 import { LanguageAddon } from './components/LanguageAddon';
 import { CloudLibrary } from './components/CloudLibrary';
+import { GitHubExportModal } from './components/GitHubExportModal';
 import { 
   generateMindMap, 
   generateQuiz, 
@@ -46,6 +47,7 @@ export default function App() {
   const [unit, setUnit] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isCloudLibraryOpen, setIsCloudLibraryOpen] = useState(false);
+  const [isGitHubModalOpen, setIsGitHubModalOpen] = useState(false);
   const [cloudNotification, setCloudNotification] = useState<string | null>(null);
   const [isCachedTool, setIsCachedTool] = useState(false);
   
@@ -343,6 +345,7 @@ export default function App() {
         onBack={handleBack} 
         title={view === 'landing' ? 'Welcome • Form 1' : `Form 1 • ${subject || 'Select Subject'}`}
         onOpenCloudLibrary={() => setIsCloudLibraryOpen(true)}
+        onOpenGitHubModal={() => setIsGitHubModalOpen(true)}
       />
 
       {/* Cloud Notification Toast */}
@@ -375,6 +378,12 @@ export default function App() {
         onLoadQuiz={handleLoadSavedQuiz}
         onLoadFlashcards={handleLoadSavedFlashcards}
         onLoadTextbook={handleLoadSavedTextbook}
+      />
+
+      {/* GitHub Export Modal */}
+      <GitHubExportModal
+        isOpen={isGitHubModalOpen}
+        onClose={() => setIsGitHubModalOpen(false)}
       />
 
       <AnimatePresence mode="wait">
@@ -515,6 +524,12 @@ export default function App() {
             Built for Malaysian Secondary Schools. All AI outputs are generated and saved to Firebase Firestore backend.
           </p>
           <div className="flex items-center gap-4 text-[#EBDED4]/60 text-xs">
+            <button 
+              onClick={() => setIsGitHubModalOpen(true)}
+              className="text-[#D9AA90] hover:text-[#EBDED4] hover:underline flex items-center gap-1 font-medium transition-colors"
+            >
+              <span className="text-[#A65E46]">📦</span> GitHub 打包发布
+            </button>
             <button 
               onClick={() => setIsCloudLibraryOpen(true)}
               className="text-[#D9AA90] hover:text-[#EBDED4] hover:underline flex items-center gap-1 font-medium transition-colors"
